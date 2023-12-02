@@ -21,10 +21,13 @@ input %>%
 input %>% 
   mutate(id = row_number()) %>% 
   mutate(items = str_extract_all(x, "\\d+\\s[a-z]+")) %>% 
-  unnest(items) %>% 
+  unnest(items) %>%
   separate(items, into = c("number", "color"), sep = " ", convert = TRUE) %>% 
   group_by(id, color) %>% 
   summarise(number = max(number)) %>% 
+  ungroup() %>% 
+  group_by(id) %>% 
   summarise(power = prod(number)) %>% 
+  ungroup() %>% 
   summarise(res = sum(power))
 
