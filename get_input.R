@@ -9,7 +9,7 @@ get_input <- function(day) {
     httr2::resp_body_string() |>
     stringr::str_split("\n")
   
-  tibble::tibble(x = head(body_string[[1]], -1))
+  tibble::tibble(input = head(body_string[[1]], -1))
 }
 
 
