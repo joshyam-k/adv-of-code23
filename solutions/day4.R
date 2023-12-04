@@ -28,9 +28,11 @@ m <- overlaps$n_overlap
 copies <- rep(1, n_games)
 
 
-for (i in seq_len(n_games)) {
+for (i in 1:n_games) {
   if (m[i] > 0) {
-    range <- seq(i + 1, min(i + m[i], n_games))
+    range <- seq(from = i + 1, to = i + m[i])
+    # can't overlap over the length of the input
+    range[range <= n_games]
     copies[range] <- copies[range] + copies[i]
   }
 }
