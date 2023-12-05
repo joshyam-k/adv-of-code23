@@ -51,7 +51,7 @@ for (i in seq_along(seeds)) {
   for (j in seq_along(flow[-length(flow)])) {
     flow_j <- input_clean[[flow[j]]]
     link <- flow_j %>% 
-      filter(between(rep(seed_i, nrow(flow_j)), flow_j[[2]], flow_j[[2]] + flow_j[["range"]] - 1 ))
+      filter(between(rep(curr_item, nrow(flow_j)), flow_j[[2]], flow_j[[2]] + flow_j[["range"]] - 1 ))
     old <- curr_item
     if (nrow(link) == 0) {
       curr_item <- curr_item
