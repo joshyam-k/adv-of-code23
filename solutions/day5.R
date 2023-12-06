@@ -119,13 +119,10 @@ seed_lst <- split(data.frame(new_seeds_vec), f = sections)
 
 
 res <- parallel::parLapply(cl,
-                           X = new_seeds_vec[1:1e8],
+                           X = new_seeds_vec,
                            fun = find_min_loc)
 
-res <- new_seeds %>% 
-  future_map_dbl(find_min_loc) 
-
-min(res)
+min(unlist(res))
 
 
 
