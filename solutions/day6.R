@@ -6,7 +6,6 @@ source(here("get_input.R"))
 input_raw <- get_input(6)
 
 time <- str_extract_all(input_raw[1, ], "\\d+")[[1]] %>% as.numeric()
-
 distance <- str_extract_all(input_raw[2, ], "\\d+")[[1]] %>% as.numeric()
 
 ways_to_win <- function(.time, .distance) {
