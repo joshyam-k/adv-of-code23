@@ -67,9 +67,7 @@ joker_upgrade <- function(hand, vals) {
     } else if (sum(non_J == 1) == 3) {
       upgrade <- "three_of"
     }
-    
-    # if 2 of a kind and 1 of other: four_of
-    # if all distinct : three_of
+  
     
   } else if (n_J == 1) {
     
@@ -84,13 +82,6 @@ joker_upgrade <- function(hand, vals) {
     } else if (sum(non_J == 4) == 1) {
       upgrade <- "five_of"
     }
-    
-    # if all distinct: two_pair
-    # if 2 of a kind and 2 distinct: three_of
-    # if 2 of a kind and 2 of a kind: full house
-    # if 3 of a kind and 1 distinct: four_of
-    # if 4 of a kind: five_of
-
     
   } else {
     upgrade <- "missing"
@@ -107,5 +98,4 @@ inp %>%
   mutate(final_type = ifelse(type2 == "missing", type, type2)) %>% 
   arrange(factor(final_type, levels = type_levels), rank_str) %>% 
   mutate(final_rank = rev(row_number())) %>% 
-  #View()
   summarise(answer = sum(final_rank * bid))
